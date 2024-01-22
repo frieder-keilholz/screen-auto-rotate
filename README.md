@@ -10,6 +10,11 @@ The Host is connected via USB and orientation changes are transmitted over seria
 ### Host Driver
 A Python script receives the changes and adjusts the screen orientation between landscape and portrait mode.
 
+## Requirements
+On the Host install python packages:
+- rotate-screen
+- pyserial
+
 ## Install
 1) Adjust your Analog Pin in the main.py file
 2) Copy the main.py file to your Raspberry Pico
