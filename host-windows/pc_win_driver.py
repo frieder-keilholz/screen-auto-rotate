@@ -1,5 +1,4 @@
 import serial
-import win32api as win32
 import rotatescreen
 
 def main():
