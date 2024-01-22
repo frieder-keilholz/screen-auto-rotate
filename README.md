@@ -18,6 +18,12 @@ On the Host install python packages:
 ## Install
 1) Adjust your Analog Pin in the main.py file
 2) Copy the main.py file to your Raspberry Pico
+### Windows
 3) Connect the Pi to the Host PC and note down the COM port
 4) Adjust the COM port as well as screen and screen orientation (portrait_flipped/portrait) in the pc_win_driver.py 
 5) Run Windows+R and enter shell:startup then create a link to win_auto_start.vbs to have it autostart on boot
+
+### Ubuntu
+3) Connect the Pi to the Host PC and look for the serial port
+4) Adjust the serial port as well as screen selection and screen orientation (normal/left/right) in the ubuntu-driver.py
+5) Create systemd service and enable to start on boot
