@@ -1,13 +1,13 @@
 import serial
-import rotatescreen
+import subprocess
 
 def main():
     print("Start Serial")
     s = serial.Serial(port="/dev/ttyUSB0", baudrate=9600, timeout=None)
     s.flush()
     current_orientation = 0
-    #select 2nd display
-    screen = rotatescreen.get_secondary_displays()[0]
+    #select display
+    screen = subprocess.check_output("xrandr | grep ' connected' | cut -d ' ' -f1", shell=True).decode().strip()
     print(screen)
 
     try:
@@ -18,13 +18,13 @@ def main():
                 if current_orientation != 1:
                     current_orientation = 1
                     #change screen orientation to horizontal
-                    screen.set_landscape() #(customize here)
+                    subprocess.call(f"xrandr --output {screen} --rotate normal", shell=True) #(customize rotation here)
 
             elif mes == "2\r\n":
                 if current_orientation != 2:
                     current_orientation = 2
                     #change screen orientation to vertical
-                    screen.set_portrait_flipped() #(customize here)
+                    subprocess.call(f"xrandr --output {screen} --rotate left", shell=True) #(customize rotation here)
                     
     except KeyboardInterrupt:
         s.close()
